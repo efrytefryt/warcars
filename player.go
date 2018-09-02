@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 type player struct {
-	ID   string `json:"_id" bson:"_id"`
-	Name string `json:"name"`
+	ID   *string `json:"_id" bson:"_id"`
+	Name *string `json:"name"`
 }
 
 func (p player) String() string {

@@ -45,7 +45,11 @@ func main() {
 	}).Methods("POST")
 
 	r.HandleFunc("/players", func(w http.ResponseWriter, r *http.Request) {
-		playersHandler.get(playersHandler{}, w, r)
+		playersHandler.getAll(playersHandler{}, w, r)
+	}).Methods("GET")
+
+	r.HandleFunc("/players/{id}", func(w http.ResponseWriter, r *http.Request) {
+		playersHandler.getOne(playersHandler{}, w, r)
 	}).Methods("GET")
 
 	r.HandleFunc("/auctionHouseItems", auctionHouseItemsListingHandler).Methods("GET")

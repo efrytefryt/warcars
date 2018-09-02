@@ -25,9 +25,12 @@ func (dbFiller) addPlayer() {
 		log.Fatal(err)
 	}
 
+	id := uuid.New().String()
+	name := fmt.Sprintf("Player %v", count)
+
 	p := &player{
-		ID:   uuid.New().String(),
-		Name: fmt.Sprintf("Player %v", count)}
+		ID:   &id,
+		Name: &name}
 
 	_, err = storedPlayers.InsertOne(context.Background(), p)
 	if err != nil {
